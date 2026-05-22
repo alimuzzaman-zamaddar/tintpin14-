@@ -1,4 +1,4 @@
-import React from "react";
+
 import { HiOutlineCheckCircle } from "react-icons/hi2";
 
 // 1. TypeScript Interfaces for the Pricing structure

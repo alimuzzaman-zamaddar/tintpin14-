@@ -3,7 +3,6 @@ import { Outlet } from "react-router-dom";
 import { FaArrowUp } from "react-icons/fa";
 import { ScrollToTop } from "../lib/ScrollToTop";
 import Header from "../Pages/components/homepage/Header";
-import Footer from "../Pages/components/homepage/Footer";
 
 const MainLayout = () => {
   const [showGoTop, setShowGoTop] = useState(false);
@@ -37,8 +36,6 @@ const MainLayout = () => {
       <main>
         <Outlet />
       </main>
-
-      <Footer />
 
 
       {/* Go To Top Button */}
