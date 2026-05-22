@@ -6,6 +6,7 @@ import {
 } from "react-icons/fa6";
 import { AppleSvg, GoogleSvg } from "../../../lib/Svg";
 import logo from "../../../assets/sitelogo.png";
+import { Link } from "react-router-dom";
 
 interface SocialMediaItem {
   id?: number;
@@ -84,7 +85,9 @@ const Footer = ({ footerSection }: FooterProps) => {
           <div className="md:col-span-3 flex flex-col items-start max-w-[320px]">
             {/* Brand Logo Identity */}
             <div className="flex items-center gap-2 cursor-pointer group mb-6">
+              <Link to="/">
               <img src={footerLogo} alt="Footer Logo" />
+              </Link>
             </div>
 
             {/* Corporate Subtitle Statement */}

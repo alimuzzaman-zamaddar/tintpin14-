@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { FaHamburger } from "react-icons/fa";
-import { FaTimeline } from "react-icons/fa6";
+
 
 import logo from "../../../assets/sitelogo.png";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +18,9 @@ export default function Header() {
         <div className="bg-[#b3c3e3]/10 backdrop-blur-md border border-white/10 rounded-xl px-6 py-3 lg:py-4 flex items-center justify-between shadow-xl">
           {/* Logo Section */}
           <div className="flex items-center gap-2 cursor-pointer">
-            <img src={logo} alt="Logo" />
+            <Link to="/">
+           <img src={logo} alt="Logo" />
+            </Link>
           </div>
 
           {/* Desktop Links (Hidden on Mobile & Tablet) */}
@@ -81,20 +84,9 @@ export default function Header() {
         <div>
           {/* Slider Header */}
           <div className="flex items-center justify-between pb-6 border-b border-white/20">
-            <div className="flex items-center gap-2">
-              <span className="text-[#146DE1] font-extrabold text-lg tracking-tight">
-                BarkBridge
-              </span>
-              <span className="bg-[#2606ED] text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase">
-                AI
-              </span>
-            </div>
-            <button
-              onClick={() => setIsOpen(false)}
-              className="text-white hover:text-[#146DE1] text-2xl p-1 transition-colors"
-            >
-              <FaTimeline />
-            </button>
+          <Link to="/">
+<img src={logo} alt="Logo" />
+</Link>
           </div>
 
           {/* Slider Menu Navigation Links */}
