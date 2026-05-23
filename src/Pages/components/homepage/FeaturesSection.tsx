@@ -169,6 +169,7 @@ export default function FeaturesSection({
 
   return (
     <section
+    id="services"
       ref={sectionRef}
       className="relative w-full bg-[#030712] text-white py-20 lg:py-28 font-['Outfit'] select-none overflow-hidden"
     >

@@ -72,6 +72,23 @@ const Footer = ({ footerSection }: FooterProps) => {
     return <FaFacebookF />;
   };
 
+  // smooth scroll function added only
+  const handleScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    id: string
+  ) => {
+    e.preventDefault();
+
+    const section = document.getElementById(id);
+
+    if (section) {
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
     <footer className="relative w-full bg-[#030712] text-white pt-16 pb-8 font-['Outfit'] select-none overflow-hidden">
       {/* ==================== TOP AMBIENT SHINE ==================== */}
@@ -86,7 +103,7 @@ const Footer = ({ footerSection }: FooterProps) => {
             {/* Brand Logo Identity */}
             <div className="flex items-center gap-2 cursor-pointer group mb-6">
               <Link to="/">
-              <img src={footerLogo} alt="Footer Logo" />
+                <img src={footerLogo} alt="Footer Logo" />
               </Link>
             </div>
 
@@ -104,21 +121,16 @@ const Footer = ({ footerSection }: FooterProps) => {
 
             <div className="flex flex-col space-y-3">
               <a
-                href="#overview"
-                className="text-sm font-normal text-[rgba(255,255,255,0.55)] hover:text-white transition-colors tracking-wide"
-              >
-                Overview
-              </a>
-
-              <a
                 href="#about"
+                onClick={(e) => handleScroll(e, "about")}
                 className="text-sm font-normal text-[rgba(255,255,255,0.55)] hover:text-white transition-colors tracking-wide"
               >
                 About Us
               </a>
 
               <a
-                href="#service"
+                href="#services"
+                onClick={(e) => handleScroll(e, "services")}
                 className="text-sm font-normal text-[rgba(255,255,255,0.55)] hover:text-white transition-colors tracking-wide"
               >
                 Service
@@ -135,6 +147,7 @@ const Footer = ({ footerSection }: FooterProps) => {
             <div className="flex flex-col space-y-3">
               <a
                 href="#contact"
+                onClick={(e) => handleScroll(e, "contact")}
                 className="text-sm font-normal text-[rgba(255,255,255,0.55)] hover:text-white transition-colors tracking-wide"
               >
                 Contact
@@ -142,6 +155,7 @@ const Footer = ({ footerSection }: FooterProps) => {
 
               <a
                 href="#privacy"
+                onClick={(e) => handleScroll(e, "privacy")}
                 className="text-sm font-normal text-[rgba(255,255,255,0.55)] hover:text-white transition-colors tracking-wide"
               >
                 Privacy
@@ -149,6 +163,7 @@ const Footer = ({ footerSection }: FooterProps) => {
 
               <a
                 href="#terms"
+                onClick={(e) => handleScroll(e, "terms")}
                 className="text-sm font-normal text-[rgba(255,255,255,0.55)] hover:text-white transition-colors tracking-wide"
               >
                 Terms

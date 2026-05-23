@@ -29,7 +29,7 @@ const MainLayout = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative bg-[#030712]">
       <ScrollToTop />
       <Header />
 

@@ -1,6 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import { FaHamburger } from "react-icons/fa";
-
 
 import logo from "../../../assets/sitelogo.png";
 import { Link } from "react-router-dom";
@@ -9,7 +9,29 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("HOME");
 
-  const navLinks = ["HOME", "ABOUT US", "SERVICES", "CONTACT"];
+  // added section ids only
+  const navLinks = [
+    { name: "HOME", id: "home" },
+    { name: "ABOUT US", id: "about" },
+    { name: "SERVICES", id: "services" },
+    { name: "CONTACT", id: "contact" },
+  ];
+
+  // smooth scrolling function
+  const handleScroll = (id:any, linkName: any) => {
+    setActiveTab(linkName);
+
+    const section = document.getElementById(id);
+
+    if (section) {
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+
+    setIsOpen(false);
+  };
 
   return (
     <>
@@ -19,18 +41,19 @@ export default function Header() {
           {/* Logo Section */}
           <div className="flex items-center gap-2 cursor-pointer">
             <Link to="/">
-           <img src={logo} alt="Logo" />
+              <img src={logo} alt="Logo" />
             </Link>
           </div>
 
           {/* Desktop Links (Hidden on Mobile & Tablet) */}
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => {
-              const isActive = activeTab === link;
+              const isActive = activeTab === link.name;
+
               return (
                 <button
-                  key={link}
-                  onClick={() => setActiveTab(link)}
+                  key={link.name}
+                  onClick={() => handleScroll(link.id, link.name)}
                   style={{ fontFeatureSettings: "'liga' off, 'clig' off" }}
                   className={`text-base font-normal transition-all duration-200 outline-none
                     ${
@@ -39,7 +62,7 @@ export default function Header() {
                         : "text-white hover:text-[#146DE1]"
                     }`}
                 >
-                  {link}
+                  {link.name}
                 </button>
               );
             })}
@@ -72,7 +95,11 @@ export default function Header() {
       {/* Backdrop Dimmer Overlay */}
       <div
         className={`fixed inset-0 bg-black/40 z-[60] transition-opacity duration-300 lg:hidden
-          ${isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+          ${
+            isOpen
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
+          }`}
         onClick={() => setIsOpen(false)}
       />
 
@@ -84,22 +111,20 @@ export default function Header() {
         <div>
           {/* Slider Header */}
           <div className="flex items-center justify-between pb-6 border-b border-white/20">
-          <Link to="/">
-<img src={logo} alt="Logo" />
-</Link>
+            <Link to="/">
+              <img src={logo} alt="Logo" />
+            </Link>
           </div>
 
           {/* Slider Menu Navigation Links */}
           <div className="flex flex-col gap-4 mt-8">
             {navLinks.map((link) => {
-              const isActive = activeTab === link;
+              const isActive = activeTab === link.name;
+
               return (
                 <button
-                  key={link}
-                  onClick={() => {
-                    setActiveTab(link);
-                    setIsOpen(false); // Closes slider on click
-                  }}
+                  key={link.name}
+                  onClick={() => handleScroll(link.id, link.name)}
                   style={{ fontFeatureSettings: "'liga' off, 'clig' off" }}
                   className={`text-left text-lg font-normal py-2 transition-all block w-full
                     ${
@@ -108,7 +133,7 @@ export default function Header() {
                         : "text-white hover:text-[#146DE1]"
                     }`}
                 >
-                  {link}
+                  {link.name}
                 </button>
               );
             })}
@@ -118,7 +143,7 @@ export default function Header() {
         {/* Slider Footer Button */}
         <div className="mt-auto pt-6 border-t border-white/20">
           <button
-            className="text-white text-base font-semibold w-full py-3.5 rounded-lg shadow-lg active:scale-98 transition-all"
+            className="text-white text-base font-semibold w-full px-3  py-2 rounded-lg shadow-lg active:scale-98 transition-all"
             style={{
               background:
                 "linear-gradient(156deg, #3B53FF 1.44%, #2606ED 63.36%)",

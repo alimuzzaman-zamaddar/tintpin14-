@@ -53,7 +53,7 @@ export default function NewsletterSection({
   };
 
   return (
-    <section className="relative w-full bg-[#030712] text-white font-['Outfit'] select-none pb-10 overflow-hidden">
+    <section id="contact" className="relative w-full bg-[#030712] text-white font-['Outfit'] select-none pb-10 overflow-hidden">
       {/* Soft background ambient glow */}
       <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-blue-600/10 blur-[120px] pointer-events-none z-0" />
 
